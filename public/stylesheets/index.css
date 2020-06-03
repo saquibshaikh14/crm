@@ -1,0 +1,143 @@
+body {
+    background-color: #f8efe3;
+    font-size: 1.2rem;
+}
+
+.u-header {
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.u-header a {
+    color: #999;
+    transition: ease-in-out color 0.15s;
+}
+
+#menu-toggle {
+    display: none;
+}
+
+
+/* #menu-toggle:last-child {
+    border-bottom: 1px solid black;
+} */
+
+#menu-toggle-btn {
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    #menu-toggle {
+        z-index: 1030;
+        position: absolute;
+        width: 100%;
+        background-color: rgb(247, 247, 247);
+        -webkit-box-shadow: 0 10px 10px -10px #000000;
+        -moz-box-shadow: 0 10px 10px -10px #000000;
+        box-shadow: 0 10px 10px -10px #000000;
+    }
+    #menu-toggle a {
+        display: block;
+        color: #999;
+    }
+    #menu-toggle a:active,
+    #menu-toggle a:hover {
+        text-decoration: none;
+    }
+}
+
+.main {
+    width: 90%;
+    margin: 0 auto;
+    font-size: 110%;
+}
+
+.u-bordered-btn {
+    border: 1px solid green;
+    padding: 10px 20px;
+}
+
+.u-header .active {
+    color: #fff !important;
+}
+
+
+/* third row */
+
+#navbarNavAltMarkup .active {
+    border-bottom: 2px solid teal;
+}
+
+.u-row-border {
+    border-bottom: 1px solid rgb(190, 189, 189);
+}
+
+@media (max-width: 576px) {
+    #navbarNavAltMarkup a {
+        padding: 3px;
+        margin: 0;
+    }
+    .main .row:first-of-type {
+        border-bottom: 1px solid rgb(190, 189, 189);
+    }
+}
+
+.left-aligned-btn {
+    position: absolute;
+    right: 10px;
+}
+
+@media (max-width: 768px) {
+    .left-aligned-btn {
+        top: -2px;
+        padding: 8px 16px;
+    }
+}
+
+.search-icon {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: rgba(87, 86, 86, 0.8);
+}
+
+.dropdown-menu {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.no-border {
+    border: none;
+}
+/* last */
+.create-segment-container,
+.new-segment {
+    font-size: 75%;
+    display: none;
+    position: absolute;
+    width: 300px;
+    background-color: #fff;
+}
+
+.create-segment-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+.open {
+    display: block;
+}
+
+.create-segment-container .dropdown-item {
+    font-weight: 500;
+    color: #777474;
+}
+
+
+/* date picker */
+
+div.ui-datepicker {
+    font-size: 16px;
+}

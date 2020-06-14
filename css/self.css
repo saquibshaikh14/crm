@@ -1,0 +1,142 @@
+body {
+    background-color: #f6f8f7;
+}
+
+.bg-dark-custom {
+    background-color: #c8e2e7;
+}
+
+.main-container {
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+/*------first row (all contacts and button) --------*/
+.content-heading {
+    display: inline-block;
+    padding: 0 10px 13px 10px;
+    margin: 0;
+    text-transform: capitalize;
+    border-bottom: 2px solid teal;
+}
+
+.c-bordered-btn {
+    background-color: transparent;
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 9px 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+    outline: none;
+}
+
+.c-bordered-btn:focus {
+    outline: 0 !important;
+    border: 1px solid black
+}
+
+/*----------2nd row (filter)---------*/
+.filter-heading {
+    display: inline-block;
+
+}
+
+#segment-box {
+    display: inline-block;
+}
+
+#segment-box .ui-button {
+    font-size: 14px !important;
+}
+
+#segment-box select {
+    margin: 0 5px 0 0;
+    padding: 0;
+}
+
+#segment-box select option {
+    padding: 0;
+}
+
+.filter-clear {
+    display: inline-block;
+    float: right;
+    border: none;
+    display: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: capitalize;
+    outline: none;
+}
+
+/*-----------data table----------*/
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: #dae6ef;
+}
+
+td, th {
+    border: 1px solid #c7c6c6;
+    text-align: left;
+    padding: 8px;
+    position: relative;
+}
+
+tr:nth-child(even) {
+    background-color: #ecebeb;
+}
+
+table .table-input {
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.data-table-button {
+    background-color: #4297d7;
+    padding: 9px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.fa-trash {
+    background-color: #ce5555 !important;
+}
+
+.selected-row td {
+    background-color: #2c6492;
+    color: #fff;
+}
+
+#dataTable td .fa {
+    display: inline-block;
+    background-color: #4297d7;
+    padding: 3px 0;
+    width: 25px;
+    text-align: center;
+    color: #ffffff;
+    cursor: pointer;
+    margin: 0;
+}
+
+.row-edit-buttons {
+    text-align: center;
+    width: 70px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}

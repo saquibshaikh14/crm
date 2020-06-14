@@ -1,0 +1,210 @@
+<!Doctype html>
+<html lang="en">
+<head>
+    <meta name="view-port" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.css"
+          type="text/css">
+
+    <link rel="stylesheet" href="css/structured-filter.css">
+    <link rel="stylesheet" href="css/self.css">
+</head>
+<body>
+<nav class="navbar navbar-light navbar-expand-md bg-dark-custom fixed-top shadow-sm"
+     style="font-weight: 500; font-size: 120%;">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <!--            <img src="/images/legacy/logo-small.png" alt="Logo" class="logo-image" loading="lazy">-->
+            Logo
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/test/test.html">Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/test/test.html">Audience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+
+                <ul class="navbar-nav ml-0 ml-lg-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right w-auto" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Login
+                                <i class="fa fa-sign-in"></i>
+                            </a>
+                            <a class="dropdown-item" href="#">Signup
+                                <i class="fa fa-user-plus"></i> </a>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- navbar ends -->
+<div class="main-container">
+    <div class="row border-bottom pb-3 pb-md-0">
+        <div class="col-md-6 pl-0">
+            <h4 class="content-heading">all contacts</h4>
+        </div>
+        <div class="col-md-6 text-md-right text-left pr-0 pl-0 mt-3 mt-md-0">
+            <button class="c-bordered-btn"><i class="fa fa-refresh"></i>&nbsp; sync contact</button>
+            <button class="c-bordered-btn"><i class="fa fa-plus"></i>&nbsp; add contacts</button>
+        </div>
+    </div>
+    <!--    first row ends (content-heading and add button) ----->
+    <div class="row mt-5">
+        <div class="col-md-8 mt-md-4">
+            <div class="clearfix">
+                <h4 class="filter-heading">Create Segment</h4>
+                <button class="filter-clear">clear</button>
+            </div>
+            <div id="segment-box"></div>
+        </div>
+        <div class="col-md-4 bg-secondary mt-md-4">
+            Search
+        </div>
+    </div>
+
+<!--    better show 20 at a time-->
+<!--    data table ------>
+    <div class="row mt-5">
+        <div class="col-12 text-center mb-3">
+            <span class="fa fa-edit batch-edit data-table-button"> Edit</span>
+            <span class="fa fa-trash batch-delete data-table-button"> Delete</span>
+        </div>
+
+        <div class="col-12">
+            <table id="dataTable">
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                </tr>
+                <tr>
+                    <td class="row-edit-buttons">
+                        <span class="fa fa-edit"></span>
+                        <span class="fa fa-trash"></span>
+                    </td>
+                    <td>Saquib</td>
+                    <td>+919191919191</td>
+                    <td>saquib@gmail.com</td>
+                    <td>Kolkata</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+<script src="js/structured-filter.js" type="text/javascript" type="text/javascript"></script>
+<script src="js/table.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#segment-box').structFilter({
+            buttonLabels: true,
+            submitReady: true,
+            submitButton: true,
+            fields: [
+                {id: "dateadded", type: "date", label: "Date Added"},
+                {id: "email", type: "text", label: "Email"},
+                {id: "firstname", type: "text", label: "First Name"},
+                {id: "lastname", type: "text", label: "Last Name"},
+                {id: "dob", type: "date", label: "Date Of Birth"},
+                {id: "contact", type: "text", label: "Contact"},
+                {id: "city", type: "text", label: "City"},
+                {id: "state", type: "text", label: "State"},
+                {id: "country", type: "text", label: "Country"},
+                {id: "zip", type: "number", label: "Zip"},
+                {id: "tag", type: "text", label: "Tag"},
+                {id: "product", type: "text", label: "Product"},
+                {id: "orderdate", type: "date", label: "Order Date"},
+                {id: "email_sub", type: "boolean", label: "Email Subscribe"},
+                {id: "sms_sub", type: "boolean", label: "SMS Subscribe"},
+                {id: "whatsapp_sub", type: "boolean", label: "Whatsapp Subscribe"},
+                // {id: "age", type: "number", label: "Age"},
+                // {id: "bday", type: "date", label: "Birthday"},
+                // {
+                //     id: "category", type: "list", label: "Category",
+                //     list: [
+                //         {id: "1", label: "Family"},
+                //         {id: "2", label: "Friends"},
+                //         {id: "3", label: "Business"},
+                //         {id: "4", label: "Acquaintances"},
+                //         {id: "5", label: "Other"}
+                //     ]
+                // }
+            ]
+        });
+
+        $('#segment-box').on('submit.search', function (event) {
+            console.log($("#segment-box").structFilter("val"));
+        });
+
+        $("#segment-box").on("change.search", function(event){
+            $('#segment-box').css('display', 'block');
+            $('.filter-clear').show();
+        });
+        $('.filter-clear').on('click', function () {
+            $('#segment-box').structFilter("clear");
+            $('.filter-clear').hide();
+            $('#segment-box').css('display', 'inline-block');
+        });
+
+    });
+
+</script>
+<script>
+    var count = 1;
+    var tableData={
+        name: "saquib"+count,
+        email: 'saquib'+count+ '@gmail.com',
+        add: 'kolkata'+count,
+        countact: "+91xxxxxx"+count
+    };
+    for(count; count<=20;count++){
+        $('#dataTable').append(`<tr>
+                    <td class="row-edit-buttons">
+                        <span class="fa fa-edit"></span>
+                        <span class="fa fa-trash"></span>
+                    </td>
+                    <td>Saquib${count}</td>
+                    <td>+91xxxxxx${count}</td>
+                    <td>saquib${count}@gmail.com</td>
+                    <td>Kolkata${count}</td>
+                </tr>`);
+    }
+
+
+
+</script>
+
+</body>
+
+
+</html>

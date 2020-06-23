@@ -1,0 +1,16 @@
+heading format should be same as in 'demo.xlsx' file.
+Do not change order.
+DO not use spaced word in heading.
+date format dd-mm-yyyy !important.
+
+if(got error) check date format.
+check headings are same as given in 'demo.xlsx'.
+check any field is not empty. if(empty) place "". or 0 as required.
+
+
+//dateadded: (dd-mm-yyyy) format.
+//dob: date of birth (dd-mm-yyyy) format.
+//emc: email marketing consent (format yes/no )
+//smc: sms marketing consent (format yes/no )
+//total: total purchase value(format should be number).
+//last_purchase: last_purchase amount (format should be number)

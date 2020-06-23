@@ -3,7 +3,7 @@
 //insert into mongo
 
 
-#use testFilter
+//#use testFilter
 
 db.contacts.insertMany([
     {

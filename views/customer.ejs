@@ -1,291 +1,403 @@
-<p class="lead mb-3">Welcome <%= user.name %></p>
-<!doctype html>
+<!Doctype html>
 <html lang="en">
-
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Customer</title>
-</head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/redmond/jquery-ui.css"
+          type="text/css">
 
+    <link rel="stylesheet" href="/css/structured-filter.css" type="text/css">
+    <link rel="stylesheet" href="/css/self.css" type="text/css">
+</head>
 <body>
 
-    <nav class="navbar shadow navbar-expand-lg navbar-dark bg-dark fixed-top" style="font-weight: 500;">
-        <div class="container">
-          <a class="navbar-brand" href="/">
+
+<nav class="navbar navbar-light navbar-expand-md bg-dark-custom fixed-top shadow-sm"
+     style="font-weight: 500; font-size: 120%;">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <!--            <img src="/images/legacy/logo-small.png" alt="Logo" class="logo-image" loading="lazy">-->
             Logo
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-          <div id="navbarNavDropdown" class="navbar-collapse collapse">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="/">Audience </a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="#">About</a>
-                  </li>
-                 
-  
-              </ul>
-              <ul class="navbar-nav">
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="#"><%= user.name.split(" ")[0] %></a>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/test/test.html">Home
+                    </a>
                 </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/users/logout">Logout</a>
-                  </li>
-                 
-                  
-              </ul>
-          </div>
-                  
-        </div>
-      </nav>
+                <li class="nav-item">
+                    <a class="nav-link" href="/test/test.html">Audience</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
 
-
-
-    <!-- audience section -->
-    <div style="width: 100%;height:15px"></div>
-    <% if(success_msg=='Updated successfully'){ %>
-    <div class="alert alert-success text-center" id="fade-out"><%= success_msg %></div>
-    <% } %>
-    <div class="main">
-    
-
-        <div class="row mt-4 mt-md-3 u-row-border">
-
-            <nav class="navbar navbar-light w-100 py-0">
-
-                <div id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item ml-4 ml-sm-0 px-1 nav-link active" href="/customer">All contacts
+                <ul class="navbar-nav ml-0 ml-lg-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
                         </a>
-                        
-                            <a class="btn u-bordered-btn left-aligned-btn" href="/addCustomer"><span class="fa fa-plus"></span> Add contacts</a>
-                        
-                    </div>
-                </div>
-            </nav>
+
+                        <div class="dropdown-menu dropdown-menu-right w-auto" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Login
+                                <i class="fa fa-sign-in"></i>
+                            </a>
+                            <a class="dropdown-item" href="#">Signup
+                                <i class="fa fa-user-plus"></i> </a>
+
+                        </div>
+                    </li>
+                </ul>
+
+            </ul>
         </div>
-
-   
-
-        <div class="row mt-3 mt-md-5">
-            <div class="col-md-4 order-md-2 p-2">
-                <div class="form-group m-0 p-0">
-                    <input type="text" class="form-control pl-5" id="search-lead" placeholder="Search" id="search-lead">
-                    <span class="fa fa-search search-icon"></span>
+    </div>
+</nav>
+<!-- navbar ends -->
+<div class="main-container">
+    <!-- Modal -->
+    <div class="modal fade" id="batchImportModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Batch Import</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-            </div>
-            <div class="col-md-8 order-md-1 p-2">
-  
+                <div class="modal-body">
+                    <div class="alert alert-warning">Upload xlsx file. Refer <a href="/files/xls/demo" download>this</a> for format</div>
+                    <p class="text-muted"> Upload csv file</p>
+                    <form action="/customer/contacts/batchinsert" method="post" enctype="multipart/form-data" id="batchImportForm">
+                        <div class="alert alert-success" style="display: none">Import successful</div>
+                        <div class="alert alert-danger" style="display: none">Import failed!!!</div>
+                        <div class="input-group mb-3">
 
-                <button class="btn u-bordered-btn dropdown-toggle shadow-none" type="button" id="create-segment" aria-haspopup="true" aria-expanded="false">
-                    Create segment
-                </button>
-            <div class="create-segment-container">
-                <div class="form-group mt-2 p-2">
-                    <input class="form-control shadow-none search-segment" type="text" placeholder="Search segment">
-                </div>
-                <div id="segments">
-                    <div class="dropdown-header pl-2">BY PROPERTIES</div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="batchFile" id="inputGroupFile">
+                                <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary ml-2" id="batchImportBtn"><span class="spinner-border text-light btn-loader" style="display: none;"></span> Import</button>
+                        </div>
 
-                    <button class="dropdown-item segment-item prop" type="button">Date added</button>
-                    <button class="dropdown-item segment-item prop" type="button">Email</button>
-                    <button class="dropdown-item segment-item prop" type="button">First name</button>
-                    <button class="dropdown-item segment-item prop" type="button">Last name</button>
-                    <!-- <button class="dropdown-item segment-item prop" type="button">Gender</button> -->
-                    <button class="dropdown-item segment-item prop" type="button">Date of birth</button>
-                    <button class="dropdown-item segment-item prop" type="button">Contact</button>
-                    <button class="dropdown-item segment-item prop" type="button">City</button>
-                    <button class="dropdown-item segment-item prop" type="button">State</button>
-                    <button class="dropdown-item segment-item prop" type="button">Country</button>
-                    <button class="dropdown-item segment-item prop" type="button">Zip</button>
-                    <button class="dropdown-item segment-item prop" type="button">Tag</button>
-                    <div class="dropdown-divider"></div>
+                    </form>
 
-                    <div class="dropdown-header pl-2">BY SHOPPING</div>
-                    <button class="dropdown-item segment-item shop" type="button">Product</button>
-                    <button class="dropdown-item segment-item shop" type="button">Order date</button>  
-
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-header pl-2">BY SUBSCRIPTION</div>
-                    <button class="dropdown-item segment-item sub" type="button">EMAIL</button>
-                    <button class="dropdown-item segment-item sub" type="button">SMS</button>
-
-
-                    <div class="dropdown-divider"></div>
-                </div>
-
-
-            </div>
-            <div class="new-segment">
-                <div class="mt-2">
-                    <button type="button" class="btn ml-3 shadow-none filter-back" style="border-radius: 50%;border: 1px solid gray;color: #6a6467;"><span class="fa fa-chevron-left"></span></button>
-                    <span style="margin-left: 20px;color: gray;"></span>
-                </div>
-                <div class="dropdown-divider"></div>
-                <div class="new-segment-content clearfix">
-                    <!--                    contetn will be here.-->
                 </div>
 
             </div>
-
-
-                
-            </div>
-
         </div>
+    </div>
+<!--    batch import modal  ---->
+    <!-- Modal -->
+    <div class="modal fade" id="manualInsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Manual Insert</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="alert alert-success saveSuccMsg mx-3 mt-3" style="display: none;">Save Successful</div>
+                <div class="alert alert-danger saveFailMsg mx-3 mt-3" style="display: none;">Save Failed!</div>
+                <div class="modal-body" style="overflow-y: auto;max-height: 450px;">
+                    <form id="manualInsertForm">
 
-        <div class="row mt-5">
-            <div class="table-responsive lead-table">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Contact</th>
-                            <th scope="col">Joined</th>
-                            <th scope="col">Address</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for(var i=0;i<customers.length;i++){ %>
-                        <tr>
-                            <th scope="row"><%= i+1 %></th>
-							<td><a href="#"><%= customers[i].firstName +' '+ customers[i].lastName%></a></td>
-                            <td><%= customers[i].email %></td>
-                            <td><%= customers[i].mobile %></td>
-                            <td><%= new Date(customers[i].dateAdded).toJSON().slice(0,10) %></td>
-                            <td><%= customers[i].address %></td>
-                            <td>
-                                <a class="btn btn-primary btn-sm shadow-none" href="/customer/contact/edit/<%= customers[i]._id %>">Edit</a>
-                            </td>
-                        </tr>
-                        <% } %>
-                    </tbody>
-                </table>
+                        <ul class="form-style-1">
+                            <li>
+                                <label>Full Name</label>
+                                <input type="text" name="firstname" id="firstname" class="field-divided" placeholder="First" />
+                                <input type="text" name="lastname" id="lastname" class="field-divided" placeholder="Last" />
+                            </li>
+                            <li>
+                                <label>Email</label>
+                                <input type="email" name="email" id="email" class="field-long" />
+                            </li>
+                            <li>
+                                <label>Address</label>
+                                <input type="text" name="address" id="address" class="field-divided-6" placeholder="Address filed"/>
+                                <input type="text" name="city" id="city"  class="field-divided-3" placeholder="City"/>
+                            </li>
+
+                            <li>
+                                <input type="text" name="pin" id="pin" class="field-divided-3" placeholder="Pin" />
+                                <input type="text" name="state" id="state" class="field-divided-3" placeholder="State" />
+                                <input type="text" name="country" id="country" class="field-divided-3" placeholder="Country" />
+                            </li>
+
+                            <li>
+                                <label>Mobile</label>
+                                <input type="text" name="mobile" id="mobile" class="field-long" placeholder="Mobile"/>
+                            </li>
+                            <li>
+                                <label>Gender</label>
+                                <select name="gender" id="gender" class="field-select">
+                                    <option value="male" selected>Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Date Of Birth</label>
+                                <input type="date" name="dob" id="dob" class="field-long" />
+                            </li>
+                            <li>
+                                <label>Tags</label>
+                                <input type="text" name="tags" id="tags"  class="field-long" placeholder="Tags"/>
+                            </li>
+                            <li>
+                                <label>Date Added</label>
+                                <input type="date" name="dateadded" class="field-long" id="dateadded" />
+                            </li>
+                            <li>
+                                <label>Source</label>
+                                <input type="text" name="source" id="source" class="field-long" />
+                            </li>
+                            <li>
+                                <label>Email Marketing Consent</label>
+                                <select name="emc" id="emc" class="field-select">
+                                    <option value="1" selected>True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>SMS Marketing Consent</label>
+                                <select name="smc" id="smc" class="field-select">
+                                    <option value="1" selected>True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </li>
+                            <li>
+                                <label>Purchase History</label>
+                                <input type="text" name="total_sale_value" id="total_sale_value" class="field-divided" placeholder="Total Sales Value" />
+                                <input type="text" name="last_purchase_history" id="last_purchase_history" class="field-divided" placeholder="Last Purchase History" />
+                            </li>
+
+                        </ul>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary manualInsertBtn"><span class="spinner-border text-light btn-loader" style="display: none"> </span> Save</button>
+                </div>
             </div>
-            <!-- table ends -->
+        </div>
+    </div>
+<!--    manual insert modal ------>
+    <div class="row border-bottom pb-3 pb-md-0">
+        <div class="col-md-6 pl-0">
+            <h4 class="content-heading">all contacts</h4>
+        </div>
+        <div class="col-md-6 text-md-right text-left pr-0 pl-0 mt-3 mt-md-0">
+            <button class="c-bordered-btn"><i class="fa fa-refresh"></i>&nbsp; sync contact</button>
+            <button class="c-bordered-btn" id="addContact"><i class="fa fa-plus"></i>&nbsp; add contacts</button>
+            <div class="add-contact-option">
+                <div>
+                    <ul>
+                        <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#batchImportModal">
+                                Batch Import
+                            </button></li>
+                        <li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#manualInsert">
+                                Manual Insert
+                            </button></li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
     </div>
+    <!--    first row ends (content-heading and add button) ----->
+    <div id="saveSegment" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Segment Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-success" style="display: none">Segment Saved
+                    </div>
+                    <div class="alert alert-danger" style="display: none">Failed to save</div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Enter Segment Name" name="segment" id="segment-name">
+                    </div>
+                    <button class="btn btn-info"  id="save-segment-btn"><span class="spinner-border text-light btn-loader" style="display: none;"></span> Save</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12 mt-md-4">
+            <div class="clearfix mb-2">
+                <h4 class="filter-heading">Create Segment</h4>
+                <button id="save-segment" class="btn" data-toggle="modal" data-target="#saveSegment" style="display: none;">Save segment</button>
+                <button class="filter-clear">clear</button>
+            </div>
+<!--            segement-->
+            <div id="segment-box"></div>
+        </div>
+<!--        <div class="col-md-4 bg-secondary mt-md-4">-->
+<!--            Search-->
+<!--        </div>-->
+    </div>
+
+    <!--    better show 20 at a time-->
+    <!--    data table ------>
+    <% if(data) { %>
+
+        <div class="row my-5">
+            <div class="col-12 text-center mb-3 edit-links">
+                <span class="fa fa-edit batch-edit data-table-button"> Edit</span>
+                <span class="fa fa-trash batch-delete data-table-button"> Delete</span>
+                <span class="page-count">Page <form id="pageNavigateForm"><input class="text-center" type="number" style="max-width: 50px;line-height: 1.1" value="<%= currentPage %>" id="pageStatus"> / <span id="totalPages"><%= totalPages %> </span><button class="btn" id="pageNavigate">Go</button></form></span>
+                <span class="search-table" id="tableSearcholder">
+                <input type="text" placeholder="search" id="tableSearch">
+            </span>
+            </div>
+
+            <div class="col-12" style="overflow-x: auto;" id="dataLoadSpinner">
+                <table id="dataTable">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Joined Date</th>
+                        <th>Address</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% data.forEach(function (value) { %>
+                        <tr>
+                            <td class="row-edit-buttons">
+                                <button class="row-edit"><span class="fa fa-edit"></span></button>
+                            </td>
+                            <td><%= value.firstname+ ' ' +value.lastname %></td>
+                            <td><%= value.mobile %></td>
+                            <td><%= value.email %></td>
+                            <td><%= value.dateadded.toISOString().substring(0, 10) %></td>
+                            <td><%= value.address %></td>
+                        </tr>
 
 
 
+                    <%  })  %>
+                    </tbody>
 
 
 
+                </table>
+            </div>
+        </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    <script>
-        $(document).ready(function() {
-            //search segment
-            $('.search-segment').on('keyup', function() {
-                var seg = $(this).val().toLocaleLowerCase();
-                $('#segments *').filter(function() {
-                    $(this).toggle($(this).text().toLocaleLowerCase().indexOf(seg) > -1)
-                });
-            });
-            //search in table.
-            $('#search-lead').on('keyup', function() {
-                var lead = $(this).val().toLocaleLowerCase();
-                $('.lead-table tbody tr').filter(function() {
-                    $(this).toggle($(this).text().toLocaleLowerCase().indexOf(lead) > -1);
-                });
-            });
-            //back button
-            $('.filter-back').on('click', function() {
-                $('.new-segment').hide();
-                $('.create-segment-container').show();
-            });
-            //segment fropdown
-            $('#create-segment').on('click', function() {
-                //$('.create-segment-container').toggle();
-                $('.new-segment').hide();
-                $(this).next().toggle();
-            });
-            //segment form generation
-            $('.segment-item').on('click', function(){
-                $('.create-segment-container').hide();
-                $('.new-segment').show();
-                var heading = $(this).text();
-                var content = '';
-                if(['Date added', 'Date of birth', 'Order date'].includes(heading)){
-                    $('.new-segment div > span').text(heading);
-                    content = `
-                        <form method="GET" action="/customer/segment" id="segment-form">
-                            <input type="hidden" value="${heading.replace(/ +/g, '_')}" name="method">
-                            <div class="form-group px-3">
-                                <label>From date</label>
-                                <input type="date" class="form-control" name="dinit" autocomplete="off">
-                            </div>
-                            <div class="form-group px-3">
-                                <label>To date</label>
-                                <input type="date" class="form-control" name="dfinal" autocomplete="off"> 
-                            </div>
-                            <button class="btn float-right btn-primary mt-2 mb-3 mr-4 submit-fliter">Submit</button>
-                        </form>
-                    `;
-                }else if(['Email', 'First name', 'Last name', 'Contact', 'City', 'State', 'Country', 'Zip', 'Tag', 'Product'].includes(heading)){
-                    $('.new-segment div > span').text(heading);
-                    content = `
-                        <form method="GET" action="/customer/segment" id="segment-form">
-                            <input type="hidden" value="${heading.replace(/ +/g, '_')}" name="method">
-                            <div class="form-group px-3">
-                                <label>Segment by ${heading.toLowerCase()}</label>
-                                <input type="text" class="form-control" name="val" autocomplete="off" placeholder="Enter ${heading.toLowerCase()}"> 
-                            </div>
-                            <button class="btn float-right btn-primary mt-2 mb-3 mr-4 submit-filter">Submit</button>
-                        </form>
-                    `;
+    <% }else{ %>
+        <div class="text-center mt-5">
+            <h3>No data found!!!<h3>
+        </div>
+    <% } %>
 
-                }else if(['EMAIL', 'SMS'].includes(heading)){
-                    $('.new-segment div > span').text(heading);
-                    content = `
-                        <form method="GET" action="/customer/segment" id="segment-form">
-                            <input type="hidden" value="${heading.replace(/ +/g, '_')}_sub" name="method">
-                            <div class="form-group px-4 mt-3">
-                                <label>${$(this).text()} marketing consent</label>
-                                <select class="form-control mt-3" name="val">
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
-                                </select>
-                            </div>
-                            <button class="btn float-right btn-primary mt-2 mb-3 mr-4 submit-fliter">Submit</button>
-                        </form>
-                    `;
-                }else{
-                    $('.new-segment div > span').text("");
-                    content="";
-                }
-                $('.new-segment-content').html(content);
-                
-            });
-            
-            //dismiss update success message
-            $('#fade-out').fadeOut(3000);
-        
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+<script src="/js/structured-filter.js" type="text/javascript" type="text/javascript"></script>
+<script src="/js/table.js"></script>
+<script src="/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+        tableSearchContent();
+        $('#segment-box').structFilter({
+            buttonLabels: true,
+            submitReady: true,
+            submitButton: true,
+            fields: [
+                {id: "dateadded", type: "date", label: "Date Added"},
+                {id: "email", type: "text", label: "Email"},
+                {id: "firstname", type: "text", label: "First Name"},
+                {id: "lastname", type: "text", label: "Last Name"},
+                {id: "dob", type: "date", label: "Date Of Birth"},
+                {id: "contact", type: "text", label: "Contact"},
+                {id: "city", type: "text", label: "City"},
+                {id: "state", type: "text", label: "State"},
+                {id: "country", type: "text", label: "Country"},
+                {id: "zip", type: "text", label: "Zip"},
+                {id: "tags", type: "text", label: "Tags"},
+                {id: "product", type: "text", label: "Product"},
+                {id: "orderdate", type: "date", label: "Order Date"},
+                {id: "emc", type: "boolean", label: "Email Subscribe"},
+                {id: "smc", type: "boolean", label: "SMS Subscribe"},
+                {id: "wmc", type: "boolean", label: "Whatsapp Subscribe"}
+            ]
         });
 
-        
-    </script>
+        $('#segment-box').on('submit.search', function (event) {
+
+            var filter = $("#segment-box").structFilter("val");
+
+            if(filter.length>0){
+                $('#dataLoadSpinner').append('<div style="width: 100vw;height: 100vh; position: fixed;top:0;left:0;z-index: 1060;background-color: rgba(0,0,0,0.5);" id="spinnerContainer"><div class="spinner-border text-light btn-loader" style="position: absolute;top:50%;left:50%;height:50px;width:50px;"></div></div>');
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/customer/contacts/filter',
+                    data: {data: JSON.stringify(filter)},
+                    success:function (data) {
+                        if(data.status == '200'){
+                            var tbl = getDatTable(data);
+                            $('#dataTable').html(tbl);
+                            $('#totalPages').text('1');
+                            $('#pageStatus').val('1');
+                            $('#tableSearch').val('');
+                            $('#save-segment').show();
+                        }else{
+                            console.log('Error: 201');
+                            alert('No data found');
+                        }
+                    },
+                    error: function (err) {
+                        alert('Error');
+                    }
+                });
+                setTimeout(function () {
+                    $('#spinnerContainer').remove();
+                    tableSearchContent();
+                },100)
+            }else{
+                alert('Please enter filter !!!');
+            }
+        });
+
+        $("#segment-box").on("change.search", function (event) {
+            $('#segment-box').css('display', 'block');
+            $('.filter-clear').show();
+        });
+        $('.filter-clear').on('click', function () {
+            $('#segment-box').structFilter("clear");
+            $('.filter-clear').hide();
+            $('#save-segment').hide();
+            $('#segment-box').css('display', 'inline-block');
+        });
+
+    });
+
+</script>
+
 </body>
+
 
 </html>
